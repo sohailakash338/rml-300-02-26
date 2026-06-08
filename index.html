@@ -7,29 +7,23 @@
 <style>
 * {box-sizing: border-box;}
 body {font-family: 'Jameel Noori Nastaleeq', Arial, sans-serif; background: #0a0a0a; margin: 0; padding: 20px; color:#fff;}
-@media (max-width: 768px) {
-.card-wrapper {flex-direction: column!important;}
-}
 .search-box {max-width:550px; margin:40px auto; background:#121212; padding:40px 30px; border-radius:20px; border:2px solid #b30000; box-shadow:0 0 30px rgba(179,0,0,0.4);}
 .logo {text-align:center; margin-bottom:20px;}
 .logo img {max-width:140px; height:auto; border-radius:50%; border:4px solid #b30000; padding:6px; background:#fff;}
 h1 {color:#b30000; text-align:center; font-size:32px; margin-bottom:8px; font-weight:700;}
 .subtitle {text-align:center; color:#aaa; font-size:15px; margin-bottom:30px;}
 input {width:100%; padding:18px; background:#1e1e1e; border:2px solid #333; border-radius:10px; color:#fff; font-size:18px; margin-bottom:15px; text-align:center; direction:ltr;}
-input:focus {border-color:#b30000; outline:none;}
-button {width:100%; padding:18px; background:linear-gradient(90deg, #b30000, #8b0000); border:none; border-radius:10px; color:#fff; font-size:20px; font-weight:800; cursor:pointer; transition:0.3s;}
-button:hover {transform:scale(1.02);}
+button {width:100%; padding:18px; background:linear-gradient(90deg, #b30000, #8b0000); border:none; border-radius:10px; color:#fff; font-size:20px; font-weight:800; cursor:pointer;}
 .demo {text-align:center; margin-top:12px; font-size:13px; color:#666;}
 .demo span {color:#b30000; cursor:pointer; text-decoration:underline;}
-.result {margin-top:25px; display:none; animation:fadeIn 0.4s;}
-@keyframes fadeIn {from {opacity:0;} to {opacity:1;}}
+.result {margin-top:25px; display:none;}
 .verified-badge {background:linear-gradient(135deg, #28a745 0%, #1e7e34 100%); color:#fff; text-align:center; padding:15px; border-radius:8px; font-size:22px; font-weight:700; margin-top:20px;}
 .notfound {background:#2a0d0d; border:2px solid #ff4444; padding:25px; border-radius:10px; text-align:center; color:#ff4444; font-size:18px;}
+@media (max-width: 768px) {.card-wrapper {flex-direction: column!important;}}
 </style>
 </head>
 <body>
 
-<!-- سرچ باکس - شروع میں صرف یہ شو ہو گا -->
 <div class="search-box" id="searchBox">
 <div class="logo">
 <img src="logo.png" alt="Naya Express Logo">
@@ -37,47 +31,40 @@ button:hover {transform:scale(1.02);}
 <h1>نیا ایکسپریس</h1>
 <p class="subtitle">MEMBER VERIFICATION PORTAL<br>Instantly verify the authenticity of any NEX press card</p>
 <input type="text" id="cardNo" placeholder="RNE-400-001-26 لکھیں">
-<button onclick="verifyCard()">VERIFY NOW »</button>
+<button onclick="verifyCard()">« VERIFY NOW</button>
 <p class="demo">Try demo: <span onclick="document.getElementById('cardNo').value='RNE-400-001-26'">RNE-400-001-26</span></p>
 <div id="result" class="result"></div>
 </div>
 
-<!-- کارڈ ڈیٹیل - سرچ کے بعد شو ہو گا -->
 <div id="cardDetail" style="display:none;">
-<h2 style="text-align:center; line-height:1.4; margin-bottom:25px;">
-<span style="font-size:28px; color:#b30000; font-weight:700; display:block;">نیا ایکسپریس میڈیا گروپ</span>
-<span style="font-size:20px; color:#ccc; font-weight:700; display:block; margin-top:5px;">روزنامہ نیا ایکسپریس لاہور - اسلام آباد</span>
-<span style="font-size:18px; color:#aaa; font-weight:500; display:block; margin-top:8px;">VERIFICATION PORTAL</span>
-</h2>
-
-<div class="card-wrapper" style="max-width:950px; margin:0 auto 30px auto; display:flex; gap:20px; justify-content:center; flex-wrap:wrap;">
-  <div style="flex:1; min-width:320px; max-width:450px;">
-    <div style="padding:15px; background:#1a1a1a; border:3px solid #b30000; border-radius:12px; box-shadow:0 4px 15px rgba(179,0,0,0.3);">
-      <p style="text-align:center; margin:0 0 10px 0; font-weight:700; color:#b30000; font-size:18px;">پریس کارڈ - فرنٹ سائیڈ</p>
-      <img id="frontImg" src="" alt="Press Card Front" style="width:100%; height:auto; border-radius:8px; display:block; border:2px solid #333;">
+<h2 style="text-align:center; color:#b30000; font-size:28px;">نیا ایکسپریس میڈیا گروپ</h2>
+<div class="card-wrapper" style="max-width:950px; margin:30px auto; display:flex; gap:20px; flex-wrap:wrap;">
+  <div style="flex:1; min-width:320px;">
+    <div style="padding:15px; background:#1a1a1a; border:3px solid #b30000; border-radius:12px;">
+      <p style="text-align:center; color:#b30000; font-weight:700;">پریس کارڈ - فرنٹ سائیڈ</p>
+      <img id="frontImg" src="" style="width:100%; border-radius:8px; border:2px solid #333;">
     </div>
   </div>
-  <div style="flex:1; min-width:320px; max-width:450px;">
-    <div style="padding:15px; background:#1a1a1a; border:3px solid #b30000; border-radius:12px; box-shadow:0 4px 15px rgba(179,0,0,0.3);">
-      <p style="text-align:center; margin:0 0 10px 0; font-weight:700; color:#b30000; font-size:18px;">پریس کارڈ - بیک سائیڈ</p>
-      <img id="backImg" src="" alt="Press Card Back" style="width:100%; height:auto; border-radius:8px; display:block; border:2px solid #333;">
+  <div style="flex:1; min-width:320px;">
+    <div style="padding:15px; background:#1a1a1a; border:3px solid #b30000; border-radius:12px;">
+      <p style="text-align:center; color:#b30000; font-weight:700;">پریس کارڈ - بیک سائیڈ</p>
+      <img id="backImg" src="" style="width:100%; border-radius:8px; border:2px solid #333;">
     </div>
   </div>
 </div>
 
-<div style="max-width:600px; margin:0 auto; background:#121212; padding:25px; border-radius:10px; border-right:4px solid #b30000; box-shadow:0 2px 10px rgba(179,0,0,0.2);">
-<h3 style="text-align:center; color:#b30000; font-size:22px; margin-bottom:20px; font-weight:700;">CARD DETAILS</h3>
-<p style="margin-bottom:12px; font-size:18px; padding:8px 0; border-bottom:1px dashed #333;"><strong>PRESS CARD NUMBER:</strong> <span id="cardNumber"></span></p>
-<p style="margin-bottom:12px; font-size:18px; padding:8px 0; border-bottom:1px dashed #333;"><strong>NAME:</strong> <span id="name"></span></p>
-<p style="margin-bottom:12px; font-size:18px; padding:8px 0; border-bottom:1px dashed #333;"><strong>CNIC:</strong> <span id="cnic"></span></p>
-<p style="margin-bottom:12px; font-size:18px; padding:8px 0; border-bottom:1px dashed #333;"><strong>DESIGNATION:</strong> <span id="designation"></span></p>
-<p style="margin-bottom:12px; font-size:18px; padding:8px 0; border-bottom:1px dashed #333;"><strong>NEWSPAPER:</strong> <span id="newspaper"></span></p>
-<p style="margin-bottom:12px; font-size:18px; padding:8px 0; border-bottom:1px dashed #333;"><strong>PHONE:</strong> <span id="phone"></span></p>
-<p style="margin-bottom:12px; font-size:18px; padding:8px 0; border-bottom:1px dashed #333;"><strong>ISSUE DATE:</strong> <span id="issue"></span></p>
-<p style="margin-bottom:20px; font-size:18px; padding:8px 0;"><strong>VALID UNTIL:</strong> <span id="valid"></span></p>
+<div style="max-width:600px; margin:0 auto; background:#121212; padding:25px; border-radius:10px; border-right:4px solid #b30000;">
+<h3 style="text-align:center; color:#b30000;">CARD DETAILS</h3>
+<p><strong>PRESS CARD NUMBER:</strong> <span id="cardNumber"></span></p>
+<p><strong>NAME:</strong> <span id="name"></span></p>
+<p><strong>CNIC:</strong> <span id="cnic"></span></p>
+<p><strong>DESIGNATION:</strong> <span id="designation"></span></p>
+<p><strong>NEWSPAPER:</strong> <span id="newspaper"></span></p>
+<p><strong>PHONE:</strong> <span id="phone"></span></p>
+<p><strong>ISSUE DATE:</strong> <span id="issue"></span></p>
+<p><strong>VALID UNTIL:</strong> <span id="valid"></span></p>
 <div class="verified-badge">✓ CARD IS VERIFIED</div>
 </div>
-
 <br>
 <button onclick="location.reload()" style="max-width:300px; margin:20px auto; display:block; background:#333;">← نئی سرچ کریں</button>
 </div>
@@ -95,7 +82,6 @@ valid: "31/12/2026",
 front: "RNE-400-001-26-front.jpg",
 back: "RNE-400-001-26-back.jpg"
 }
-// نئے کارڈ یہاں ایڈ کریں - فارمیٹ اوپر والا ہی رکھیں
 };
 
 function verifyCard(){
@@ -106,4 +92,26 @@ const data = database[no];
 if(data){
 document.getElementById('cardNumber').innerText = no;
 document.getElementById('name').innerText = data.name;
-document.getElementById('cnic').innerText
+document.getElementById('cnic').innerText = data.cnic;
+document.getElementById('designation').innerText = data.designation;
+document.getElementById('newspaper').innerText = data.newspaper;
+document.getElementById('phone').innerText = data.phone;
+document.getElementById('issue').innerText = data.issue;
+document.getElementById('valid').innerText = data.valid;
+document.getElementById('frontImg').src = data.front;
+document.getElementById('backImg').src = data.back;
+
+document.getElementById('searchBox').style.display = 'none';
+document.getElementById('cardDetail').style.display = 'block';
+window.scrollTo(0,0);
+
+} else {
+result.className = "result notfound";
+result.innerHTML = "○ No member found. Please check the ID or CNIC and try again.";
+result.style.display = "block";
+}
+} // <-- یہ بریس لازمی ہے سر
+</script>
+
+</body>
+</html>
