@@ -94,7 +94,6 @@ function verifyCard(){
 const no = document.getElementById('cardNo').value.trim().toUpperCase();
 const result = document.getElementById('result');
 const data = database[no];
-console.log("Searching for:", no, "Found:", data); // ڈیبگ کے لیے
 
 if(data){
 document.getElementById('cardNumber').innerText = no;
@@ -117,7 +116,7 @@ result.className = "result notfound";
 result.innerHTML = "○ No member found. Please check the ID or CNIC and try again.";
 result.style.display = "block";
 }
-} // <-- یہ بریس لازمی ہے
+}
 </script>
 
 </body>
