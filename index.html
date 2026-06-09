@@ -58,7 +58,7 @@ button {width:100%; padding:18px; background:#ffb300; border:none; border-radius
 
 <div class="search-box" id="searchBox">
   <div class="input-label">ENTER CARD NUMBER</div>
-  <input type="text" id="cardNo" placeholder="RNE-400-001-26" value="RNE-400-001-26">
+  <input type="text" id="cardNo" placeholder="RNE-400-001-26">
   <button type="button" onclick="verifyCard()">VERIFY NOW »</button>
   <div id="result" class="result"></div>
 </div>
@@ -130,8 +130,8 @@ window.scrollTo({top:0, behavior:'smooth'});
 result.className = "result notfound";
 result.innerHTML = "○ No member found. Please check the ID or CNIC and try again.";
 result.style.display = "block";
-} // <-- سر یہاں else بند ہوا
-} // <-- فنکشن بند
+}
+} // <-- سر یہاں function بند ہوا - اب 100% پورا ہے
 </script>
 
 </body>
